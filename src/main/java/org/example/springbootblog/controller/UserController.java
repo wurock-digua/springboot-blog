@@ -1,6 +1,5 @@
 package org.example.springbootblog.controller;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import org.example.springbootblog.pojo.Result;
@@ -11,6 +10,7 @@ import org.example.springbootblog.service.UserService;
 import org.example.springbootblog.utils.JwtUtil;
 import org.example.springbootblog.utils.Md5Util;
 import org.example.springbootblog.utils.ThreadLocalUtil;
+import org.example.springbootblog.validation.group.UpdateGroup;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -101,7 +101,7 @@ public class UserController {
 	 * @return
 	 */
 	@PutMapping("/update")
-	public Result updateUserInfo(@Valid @RequestBody UserDTO userDTO) {
+	public Result updateUserInfo(@Validated(UpdateGroup.class) @RequestBody UserDTO userDTO) {
 		userService.updateUserInfo(userDTO);
 		return Result.success();
 	}
