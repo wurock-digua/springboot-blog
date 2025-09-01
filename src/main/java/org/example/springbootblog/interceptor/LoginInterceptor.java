@@ -18,6 +18,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 	private StringRedisTemplate redisTemplate;
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+		// 对OPTIONS请求直接放行，返回200
+		if ("OPTIONS".equals(request.getMethod())) {
+			response.setStatus(HttpServletResponse.SC_OK);
+			return false; // 不执行后续拦截逻辑
+		}
 		// 令牌验证
 		String token = request.getHeader("Authorization");
 		// 验证token

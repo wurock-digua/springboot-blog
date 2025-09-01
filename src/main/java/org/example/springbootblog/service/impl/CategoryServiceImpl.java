@@ -31,7 +31,7 @@ public class CategoryServiceImpl implements CategoryService {
 		Category category = Category.builder()
 				.categoryName(categoryDTO.getCategoryName())
 				.categoryAlias(categoryDTO.getCategoryAlias())
-				.createUsr(userId)
+				.createUser(userId)
 				.createTime(LocalDateTime.now())
 				.updateTime(LocalDateTime.now())
 				.build();

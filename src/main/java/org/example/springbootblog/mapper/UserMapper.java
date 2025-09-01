@@ -20,8 +20,8 @@ public interface UserMapper {
 	 * 添加用户
 	 * @param user
 	 */
-	@Insert("insert into user(username, password, createTime, updateTime) " +
-			"values(#{username}, #{password}), #{createTime}, #{updateTime})")
+	@Insert("insert into user(username, password, create_time, update_time) " +
+			"values(#{username}, #{password}, #{createTime}, #{updateTime})")
 	void addUser(User user);
 	
 	/**

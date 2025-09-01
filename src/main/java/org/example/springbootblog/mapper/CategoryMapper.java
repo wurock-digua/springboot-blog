@@ -13,7 +13,7 @@ public interface CategoryMapper {
 	 * @param category
 	 */
 	@Insert("insert into category (category_name, category_alias, create_user, create_time, update_time) " +
-			"values(#{categoryName}, #{categoryAlias}, #{createUser}, #{createTime}, #{updateTime},)")
+			"values(#{categoryName}, #{categoryAlias}, #{createUser}, #{createTime}, #{updateTime})")
 	void addArticleCategory(Category category);
 	
 	/**

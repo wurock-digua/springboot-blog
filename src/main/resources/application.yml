@@ -1,12 +1,26 @@
 spring:
- datasource:
-  type: com.alibaba.druid.pool.DruidDataSource
-  driver-class-name: com.mysql.cj.jdbc.Driver
-  url: jdbc:mysql://localhost:3306/springboot_blog?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false
-  username: root
-  password: 1234
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot-blog?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 1234
   
-mybatis:
- configuration:
-   map-underscore-to-camel-case: true
-   log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      
+mybatis-plus:
+#  mapper-locations: classpath*:org/example/springbootblog/mapper/*.xml
+#  type-aliases-package: org.example.springbootblog.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    
+aliyun:
+  oss:
+    endpoint: ${ALIYUN_OSS_ENDPOINT}
+    access-key-id: ${ALIYUN_OSS_ACCESS_KEY_ID}
+    access-key-secret: ${ALIYUN_OSS_ACCESS_KEY_SECRET}
+    bucket-name: ${ALIYUN_OSS_BUCKET_NAME}

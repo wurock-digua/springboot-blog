@@ -18,7 +18,7 @@ public class Article {
 	private String coverImg;
 	private String state;
 	private Integer categoryId;
-	private Integer createUsr;
+	private Integer createUser;
 	private LocalDateTime createTime;
 	private LocalDateTime updateTime;
 }

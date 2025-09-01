@@ -61,17 +61,17 @@ public class UserController {
 	 */
 	@PostMapping("/login")
 	public Result login(@RequestParam @NotBlank(message = "用户名不能为空")
-						 @Pattern(regexp = "^\\S{5,16}$", message = "用户名必须是5-16位的非空字符") String username,
-						 @RequestParam @NotBlank(message = "用户名不能为空")
-						 @Pattern(regexp = "^\\S{5,16}$", message = "密码必须是5-16位的非空字符") String password) {
+							@Pattern(regexp = "^\\S{5,16}$", message = "用户名必须是5-16位的非空字符") String username,
+						@RequestParam @NotBlank(message = "用户名不能为空")
+							@Pattern(regexp = "^\\S{5,16}$", message = "密码必须是5-16位的非空字符") String password) {
+		
 		// 判断数据库中是否存在该用户名
 		User user = userService.getUserByUsername(username);
 		if (user == null) {
 			return Result.error("用户名不存在");
 		}
 		// 判断密码是否正确
-		String md5String = Md5Util.getMD5String(password);
-		if (!Md5Util.checkPassword(md5String, user.getPassword())) {
+		if (!Md5Util.checkPassword(password, user.getPassword())) {
 			return Result.error("密码错误");
 		}
 		
@@ -108,11 +108,11 @@ public class UserController {
 	
 	/**
 	 * 更新登录用户头像
-	 * param userPic
+	 * @param userPic
 	 * @return
 	 */
 	@PatchMapping("/updateAvatar")
-	public Result updateUserPic(@URL @RequestParam("avatarUrl") String userPic) {
+	public Result updateUserPic(@RequestParam("avatarUrl") @URL String userPic) {
 		userService.updateUserPic(userPic);
 		return Result.success();
 	}
@@ -123,7 +123,7 @@ public class UserController {
 	 * @return
 	 */
 	@PatchMapping("/updatePwd")
-	public Result updateUserPwd(@RequestBody Map<String,Object> params, @RequestHeader String token) {
+	public Result updateUserPwd(@RequestBody Map<String,Object> params) {
 		String oldPwd = (String) params.get("old_pwd");
 		String newPwd = (String) params.get("new_pwd");
 		String rePwd = (String) params.get("re_pwd");

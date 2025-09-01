@@ -36,7 +36,7 @@ public class ArticleServiceImpl implements ArticleService {
 				.coverImg(articleDTO.getCoverImg())
 				.state(articleDTO.getState())
 				.categoryId(articleDTO.getCategoryId())
-				.createUsr(userId)
+				.createUser(userId)
 				.createTime(LocalDateTime.now())
 				.updateTime(LocalDateTime.now())
 				.build();

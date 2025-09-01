@@ -17,7 +17,7 @@ public class Category implements Serializable {
 	private Integer id;
 	private String categoryName;
 	private String categoryAlias;
-	private Integer createUsr;
+	private Integer createUser;
 	private LocalDateTime createTime;
 	private LocalDateTime updateTime;
 }
