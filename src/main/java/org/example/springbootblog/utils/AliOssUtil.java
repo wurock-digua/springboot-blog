@@ -14,16 +14,16 @@ import java.io.InputStream;
 @Component
 public class AliOssUtil {
     
-    @Value("${aliyun.oss.endpoint}")
+    @Value("${aliyun-oss.endpoint}")
     private String endpoint;
     
-    @Value("${aliyun.oss.access-key-id}")
+    @Value("${aliyun-oss.access-key-id}")
     private String accessKeyId;
     
-    @Value("${aliyun.oss.access-key-secret}")
+    @Value("${aliyun-oss.access-key-secret}")
     private String accessKeySecret;
     
-    @Value("${aliyun.oss.bucket-name}")
+    @Value("${aliyun-oss.bucket-name}")
     private String bucketName;
 
     public String uploadFile(String objectName, InputStream in) throws Exception {

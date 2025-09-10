@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Environment ###
+.env  # 环境变量配置文件（可能包含数据库密码、API密钥等）
+.env.*  # 匹配所有后缀的.env文件（如.env.dev、.env.prod）
+!.env.example  # 例外：不忽略.env.example（用于提供配置模板给团队）

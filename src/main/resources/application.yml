@@ -1,15 +1,19 @@
 spring:
+  application:
+    name: springboot-blog
+  profiles:
+    active: dev
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/springboot-blog?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false
-    username: root
-    password: 1234
+    url: jdbc:mysql://${mysql.host}:${mysql.port}/${mysql.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: ${mysql.username}
+    password: ${mysql.password}
   
   data:
     redis:
-      host: localhost
-      port: 6379
+      host: ${redis.host}
+      port: ${redis.port}
       
 mybatis-plus:
 #  mapper-locations: classpath*:org/example/springbootblog/mapper/*.xml
@@ -20,7 +24,7 @@ mybatis-plus:
     
 aliyun:
   oss:
-    endpoint: ${ALIYUN_OSS_ENDPOINT}
-    access-key-id: ${ALIYUN_OSS_ACCESS_KEY_ID}
-    access-key-secret: ${ALIYUN_OSS_ACCESS_KEY_SECRET}
-    bucket-name: ${ALIYUN_OSS_BUCKET_NAME}
+    endpoint: ${aliyun-oss.endpoint}
+    access-key-id: ${aliyun-oss.access-key-id}
+    access-key-secret: ${aliyun-oss.access-key-secret}
+    bucket-name: ${aliyun-oss.bucket-name}
